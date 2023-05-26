@@ -1,0 +1,2 @@
+Task: Install Oracle database and create one database as PortManager
+Status: Pending
