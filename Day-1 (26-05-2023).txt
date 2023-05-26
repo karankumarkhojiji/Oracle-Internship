@@ -1,2 +1,13 @@
 Task: Install Oracle database and create one database as PortManager
-Status: Pending
+
+Oracle Installation:
+
+Oracle 19c has been installed successfully
+
+
+"PortManager" Database:
+
+"PortManager" pluggable database is created successfully
+Database name: PortManager
+Administrative Username: manager
+Administrative User Password: manager
