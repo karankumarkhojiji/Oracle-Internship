@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72b230fd-6980-46d1-bc98-1a39d87e9091" name="Changes" comment="Tables Creates" />
+    <list default="true" id="72b230fd-6980-46d1-bc98-1a39d87e9091" name="Changes" comment="Tables Creates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week-1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Week-1.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2QJz6ImnRfgNJ5SOwLHQtuVSxlk" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -42,11 +45,12 @@
       "oracle"
     ],
     "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "OracleSqlPlus",
       "Oracle"
     ],
     "com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect": [
-      "Oracle",
-      "OracleSqlPlus"
+      "OracleSqlPlus",
+      "Oracle"
     ]
   }
 }]]></component>
