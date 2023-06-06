@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72b230fd-6980-46d1-bc98-1a39d87e9091" name="Changes" comment="Procedures and Sequences Creates For All Table">
+    <list default="true" id="72b230fd-6980-46d1-bc98-1a39d87e9091" name="Changes" comment="Combined Procedure">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0/storage_v2/_src_/schema/MANAGER.jZuUXA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0/storage_v2/_src_/schema/MANAGER.jZuUXA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -75,7 +75,8 @@
     <MESSAGE value="First Commit" />
     <MESSAGE value="Task 1 Done" />
     <MESSAGE value="Tables Creates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tables Creates" />
+    <MESSAGE value="Combined Procedure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Combined Procedure" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

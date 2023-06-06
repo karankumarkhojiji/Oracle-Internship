@@ -51,11 +51,11 @@
     <schema id="16" parent="1" name="MANAGER">
       <CreatedTimestamp>2023-06-05.01:34:10</CreatedTimestamp>
       <Current>1</Current>
-      <IntrospectionL1Timestamp>2023-06-05.20:03:20</IntrospectionL1Timestamp>
-      <IntrospectionL2Timestamp>2023-06-05.20:03:20</IntrospectionL2Timestamp>
-      <IntrospectionL3Timestamp>2023-06-05.20:03:20</IntrospectionL3Timestamp>
+      <IntrospectionL1Timestamp>2023-06-06.17:50:02</IntrospectionL1Timestamp>
+      <IntrospectionL2Timestamp>2023-06-06.17:50:02</IntrospectionL2Timestamp>
+      <IntrospectionL3Timestamp>2023-06-06.17:50:02</IntrospectionL3Timestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:01</ModifiedTimestamp>
       <ObjectId>105</ObjectId>
     </schema>
     <schema id="17" parent="1" name="MDDATA">
@@ -88,9 +88,9 @@
     <schema id="26" parent="1" name="PUBLIC">
       <CreatedTimestamp>2019-05-30.08:40:17</CreatedTimestamp>
       <DbLinksHash>388341457</DbLinksHash>
-      <IntrospectionL1Timestamp>2023-06-05.20:03:20</IntrospectionL1Timestamp>
-      <IntrospectionL2Timestamp>2023-06-05.20:03:20</IntrospectionL2Timestamp>
-      <IntrospectionL3Timestamp>2023-06-05.20:03:20</IntrospectionL3Timestamp>
+      <IntrospectionL1Timestamp>2023-06-06.17:50:02</IntrospectionL1Timestamp>
+      <IntrospectionL2Timestamp>2023-06-06.17:50:02</IntrospectionL2Timestamp>
+      <IntrospectionL3Timestamp>2023-06-06.17:50:02</IntrospectionL3Timestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
       <ModifiedTimestamp>2023-05-23.16:16:11</ModifiedTimestamp>
       <ObjectId>1</ObjectId>
@@ -282,73 +282,73 @@
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72973</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:40:24</ModifiedTimestamp>
       <ObjectId>73036</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>989</SourceTextLength>
+      <SourceTextLength>1011</SourceTextLength>
     </routine>
     <routine id="81" parent="16" name="MANAGE_EQUITY_RATE">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72983</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:01</ModifiedTimestamp>
       <ObjectId>73039</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>683</SourceTextLength>
+      <SourceTextLength>704</SourceTextLength>
     </routine>
     <routine id="82" parent="16" name="MANAGE_EQUITY_SHARE">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72980</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:00</ModifiedTimestamp>
       <ObjectId>73038</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>847</SourceTextLength>
+      <SourceTextLength>868</SourceTextLength>
     </routine>
     <routine id="83" parent="16" name="MANAGE_FINANCE_CATEGORY">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72977</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:00</ModifiedTimestamp>
       <ObjectId>73037</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>649</SourceTextLength>
+      <SourceTextLength>670</SourceTextLength>
     </routine>
     <routine id="84" parent="16" name="MANAGE_INSURANCE_MASTER">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72990</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:01</ModifiedTimestamp>
       <ObjectId>73042</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>935</SourceTextLength>
+      <SourceTextLength>956</SourceTextLength>
     </routine>
     <routine id="85" parent="16" name="MANAGE_MF_MASTER">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72985</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:01</ModifiedTimestamp>
       <ObjectId>73040</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>757</SourceTextLength>
+      <SourceTextLength>778</SourceTextLength>
     </routine>
     <routine id="86" parent="16" name="MANAGE_MF_RATES">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72988</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:01</ModifiedTimestamp>
       <ObjectId>73041</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>662</SourceTextLength>
+      <SourceTextLength>683</SourceTextLength>
     </routine>
     <routine id="87" parent="16" name="MANAGE_TRANSACTION">
       <CreatedTimestamp>2023-06-05.20:03:20</CreatedTimestamp>
       <DependsOnIds>-9223372036854775808,7339,72993</DependsOnIds>
       <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2023-06-05.20:03:20</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-06-06.17:50:01</ModifiedTimestamp>
       <ObjectId>73043</ObjectId>
       <RoutineKind>procedure</RoutineKind>
-      <SourceTextLength>1006</SourceTextLength>
+      <SourceTextLength>1027</SourceTextLength>
     </routine>
     <sequence id="88" parent="16" name="CUSTOMER_SEQ">
       <CacheSize>20</CacheSize>
