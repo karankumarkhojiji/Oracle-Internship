@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72b230fd-6980-46d1-bc98-1a39d87e9091" name="Changes" comment="Lower function added to procedure">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0/storage_v2/_src_/schema/MANAGER.jZuUXA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7d7d47a3-3e17-4e32-b53a-e59aaa43fab0/storage_v2/_src_/schema/MANAGER.jZuUXA.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week-1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Week-1.sql" afterDir="false" />
-    </list>
+    <list default="true" id="72b230fd-6980-46d1-bc98-1a39d87e9091" name="Changes" comment="Record Entry Done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +76,8 @@
     <MESSAGE value="Tables Creates" />
     <MESSAGE value="Combined Procedure" />
     <MESSAGE value="Lower function added to procedure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lower function added to procedure" />
+    <MESSAGE value="Record Entry Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Record Entry Done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

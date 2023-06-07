@@ -327,7 +327,6 @@ declare
     v_operation varchar2(10) := 'insert';
     v_customer  customers%rowtype;
 begin
-    -- Customer 1
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Aarav';
     v_customer.last_name := 'Patel';
@@ -340,7 +339,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 2
     v_customer.customer_id := CUSTOMER_SEQ.nextval;
     v_customer.first_name := 'Isha';
     v_customer.last_name := 'Sharma';
@@ -353,7 +351,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 3
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Rahul';
     v_customer.last_name := 'Gupta';
@@ -366,7 +363,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 4
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Aishwarya';
     v_customer.last_name := 'Singh';
@@ -379,7 +375,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 5
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Arjun';
     v_customer.last_name := 'Verma';
@@ -392,7 +387,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 6
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Kavya';
     v_customer.last_name := 'Joshi';
@@ -405,7 +399,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 7
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Vikram';
     v_customer.last_name := 'Malhotra';
@@ -418,7 +411,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 8
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Ananya';
     v_customer.last_name := 'Gandhi';
@@ -431,7 +423,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 9
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Rohan';
     v_customer.last_name := 'Reddy';
@@ -444,7 +435,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 10
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Sanaya';
     v_customer.last_name := 'Kumar';
@@ -457,7 +447,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 11
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Aditya';
     v_customer.last_name := 'Chopra';
@@ -470,7 +459,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 12
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Sakshi';
     v_customer.last_name := 'Rao';
@@ -483,7 +471,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 13
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Vishal';
     v_customer.last_name := 'Khanna';
@@ -496,7 +483,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 14
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Aditi';
     v_customer.last_name := 'Shah';
@@ -509,7 +495,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 15
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Rishi';
     v_customer.last_name := 'Mehta';
@@ -522,7 +507,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 16
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Diya';
     v_customer.last_name := 'Rajput';
@@ -535,7 +519,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 17
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Arnav';
     v_customer.last_name := 'Biswas';
@@ -548,7 +531,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 18
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Jiya';
     v_customer.last_name := 'Chatterjee';
@@ -561,7 +543,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 19
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Rohan';
     v_customer.last_name := 'Srivastava';
@@ -574,7 +555,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 20
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Sia';
     v_customer.last_name := 'Sharma';
@@ -587,7 +567,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 21
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Aryan';
     v_customer.last_name := 'Mukherjee';
@@ -600,7 +579,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 22
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Aanya';
     v_customer.last_name := 'Sharma';
@@ -613,7 +591,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 23
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Rajat';
     v_customer.last_name := 'Gupta';
@@ -626,7 +603,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 24
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Ananya';
     v_customer.last_name := 'Das';
@@ -639,7 +615,6 @@ begin
     v_customer.country := 'India';
     manage_customer(v_operation, v_customer);
 
-    -- Customer 25
     v_customer.customer_id := customer_seq.nextval;
     v_customer.first_name := 'Kabir';
     v_customer.last_name := 'Bhatia';
