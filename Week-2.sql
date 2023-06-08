@@ -1,12 +1,12 @@
--- TransactionList Procedure
 create or replace procedure transactionlist(
     p_customer_id in number default null,
     p_transaction_type in varchar2 default null,
-    p_results out varchar2
+    p_results out sys_refcursor
 ) as
-    v_result varchar2(4000); -- variable to store the result
+    v_result varchar2(4000);
+    v_query varchar2(4000);
 begin
-    v_result :=
+    v_query :=
                 'select ''transaction id: '' || t.transaction_id || chr(10) ||
                         ''transaction date: '' || t.transactions_date || chr(10) ||
                         ''transaction type: '' || t.transactions_type || chr(10) ||
@@ -20,39 +20,31 @@ begin
                 'join customers c on t.customer_id = c.customer_id';
 
     if p_customer_id is not null and p_transaction_type is not null then
-        v_result := v_result || ' where t.customer_id = ' || p_customer_id || 'and t.transactions_type = ''' ||
+        v_query := v_query || ' where t.customer_id = ' || p_customer_id || ' and t.transactions_type = ''' ||
                     p_transaction_type || '''';
 
     elsif p_customer_id is not null then
-        v_result := v_result || ' where t.customer_id = ''' || p_customer_id || '''';
+        v_query := v_query || ' where t.customer_id = ' || p_customer_id;
 
     elsif p_transaction_type is not null then
-        v_result := v_result || ' where t.transactions_type = ''' || p_transaction_type || '''';
+        v_query := v_query || ' where t.transactions_type = ''' || p_transaction_type || '''';
     end if;
 
-    execute immediate v_result into p_results;
+    open p_results for v_query;
 end;
 
 declare
-    p_results varchar2(4000);
+    p_results sys_refcursor;
+    v_result_row varchar2(4000);
 begin
-    transactionlist(p_results => p_results);
-end;
+    transactionlist(p_customer_id => 2,p_transaction_type => 'Buy',p_results => p_results);
 
-declare
-    p_results varchar2(4000);
-begin
-    transactionlist(p_customer_id => 1,p_results => p_results);
-end;
+    loop
+        fetch p_results into v_result_row;
+        exit when p_results%notfound;
 
-declare
-    p_results varchar2(4000);
-begin
-    transactionlist(p_customer_id => 1,p_transaction_type => 'Buy',p_results => p_results);
-end;
+        DBMS_OUTPUT.PUT_LINE(v_result_row);
+    end loop;
 
-declare
-    p_results varchar2(4000);
-begin
-    transactionlist(p_transaction_type => 'Sell',p_results => p_results);
+    close p_results;
 end;
