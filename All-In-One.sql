@@ -1415,3 +1415,14 @@ begin
 
     close p_results;
 end;
+
+
+-- Alter customers table
+
+alter table customers
+    add customerid varchar2(50) unique;
+
+-- Alter transaction table
+
+alter table transactions
+    add customerid varchar2(50) unique;
