@@ -3,7 +3,6 @@ create or replace procedure transactionlist(
     p_transaction_type in varchar2 default null,
     p_results out sys_refcursor
 ) as
-    v_result varchar2(4000);
     v_query varchar2(4000);
 begin
     v_query :=
