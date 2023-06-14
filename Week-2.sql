@@ -36,9 +36,8 @@ begin
 end;
 
 var rc refcursor;
-execute transactionlist(p_result=>:rc)
+execute transactionlist(p_result=>:rc);
 print rc;
-
 
 -- Alter customers table
 
@@ -58,19 +57,26 @@ begin
         select c.customer_id,
                c.first_name,
                c.last_name,
-               nvl(sum(case when t.transactions_type = 'Buy' and t.equity_id is not null then t.amount else 0 end),0)as total_investment_amount_equity,
-               nvl(sum(eq.quantity * er.closing_price), 0) as total_equity_value,
-               nvl(sum(case when t.transactions_type = 'Buy' and t.mf_id is not null then t.amount else 0 end),0) as total_investment_amount_mf,
-               nvl(sum(case when t.transactions_type = 'Buy' and t.insurance_id is not null then t.amount else 0 end),0) as total_investment_amount_insurance,
-               NVL(SUM(case when t.transactions_type = 'Buy' then t.amount else 0 end), 0) as total_investment_amount
+               sum(case
+                       when t.transactions_type = 'Buy' and t.equity_id is not null
+                           then t.amount
+                       else 0 end)                                                 as total_investment_amount_equity,
+               sum(eq.quantity * er.closing_price)                                 as total_equity_value,
+               sum(case
+                       when t.transactions_type = 'Buy' and t.mf_id is not null then t.amount
+                       else 0 end)                                                 as total_investment_amount_mf,
+               sum(case
+                       when t.transactions_type = 'Buy' and t.insurance_id is not null then t.amount
+                       else 0 end)                                                 as total_investment_amount_insurance,
+               sum(case when t.transactions_type = 'Buy' then t.amount else 0 end) as total_investment_amount
         from customers c
                  left join transactions t on c.customer_id = t.customer_id
                  left join equity_shares eq on t.equity_id = eq.equity_id
                  left join equity_rate er on eq.equity_id = er.equity_id
                  left join mf_master mf on t.mf_id = mf.mf_id
-        group by c.customer_id,
-                 c.first_name,
-                 c.last_name;
+        where t.transactions_type = 'Buy'
+          and (t.equity_id is not null or t.mf_id is not null or t.insurance_id is not null)
+        group by c.customer_id, c.first_name, c.last_name;
 end;
 
 var rc refcursor;
