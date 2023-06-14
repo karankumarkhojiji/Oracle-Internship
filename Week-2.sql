@@ -58,25 +58,47 @@ begin
                c.first_name,
                c.last_name,
                sum(case
-                       when t.transactions_type = 'Buy' and t.equity_id is not null
-                           then t.amount
-                       else 0 end)                                                 as total_investment_amount_equity,
-               sum(eq.quantity * er.closing_price)                                 as total_equity_value,
+                       when t.transactions_type = 'Buy' and t.equity_id is not null then t.amount
+                       else 0
+                   end) as total_investment_amount_equity,
                sum(case
                        when t.transactions_type = 'Buy' and t.mf_id is not null then t.amount
-                       else 0 end)                                                 as total_investment_amount_mf,
+                       else 0
+                   end) as total_investment_amount_mf,
                sum(case
                        when t.transactions_type = 'Buy' and t.insurance_id is not null then t.amount
-                       else 0 end)                                                 as total_investment_amount_insurance,
-               sum(case when t.transactions_type = 'Buy' then t.amount else 0 end) as total_investment_amount
+                       else 0
+                   end) as total_investment_amount_insurance,
+               sum(case
+                       when t.transactions_type = 'Buy' then t.amount
+                       else 0
+                   end) as total_investment_amount,
+               sum(case
+                       when t.transactions_type = 'Sell' and (t.equity_id is not null or t.mf_id is not null) then
+                           t.amount - (eq.quantity * er.closing_price)
+                       else 0
+                   end) as total_profit_loss,
+               case
+                   when sum(case when t.transactions_type = 'Buy' then t.amount else 0 end) <> 0
+                       then (sum(case
+                                     when t.transactions_type = 'Sell' then t.amount - (eq.quantity * er.closing_price)
+                                     else 0 end) /
+                             sum(case when t.transactions_type = 'Buy' then t.amount else 0 end)) * 100
+                   else 0
+                   end  as net_change_percentage
         from customers c
                  left join transactions t on c.customer_id = t.customer_id
                  left join equity_shares eq on t.equity_id = eq.equity_id
                  left join equity_rate er on eq.equity_id = er.equity_id
                  left join mf_master mf on t.mf_id = mf.mf_id
-        where t.transactions_type = 'Buy'
-          and (t.equity_id is not null or t.mf_id is not null or t.insurance_id is not null)
-        group by c.customer_id, c.first_name, c.last_name
+                 left join mf_rates mf_nav on t.mf_id = mf_nav.mf_id and t.transactions_date = mf_nav.rate_date
+                 left join insurance_master im on t.insurance_id = im.insurance_id
+        where t.equity_id is not null
+           or t.mf_id is not null
+           or t.insurance_id is not null
+        group by c.customer_id,
+                 c.first_name,
+                 c.last_name
         order by total_investment_amount desc;
 end;
 
