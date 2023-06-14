@@ -1444,7 +1444,8 @@ begin
                  left join mf_master mf on t.mf_id = mf.mf_id
         where t.transactions_type = 'Buy'
           and (t.equity_id is not null or t.mf_id is not null or t.insurance_id is not null)
-        group by c.customer_id, c.first_name, c.last_name;
+        group by c.customer_id, c.first_name, c.last_name
+        order by total_investment_amount desc;
 end;
 
 var rc refcursor;
