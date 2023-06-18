@@ -1,5 +1,3 @@
--- Week-1 Start --
-
 -- Customer Table
 
 create table customers
@@ -13,7 +11,8 @@ create table customers
     city         varchar2(50),
     state        varchar2(50),
     postal_code  varchar2(10),
-    country      varchar2(50)
+    country      varchar2(50),
+    customerid   varchar2(50) unique
 );
 
 -- Finance Category Table
@@ -90,7 +89,8 @@ create table transactions
     customer_id       number(10) references customers (customer_id),
     equity_id         number(10) references equity_shares (equity_id),
     mf_id             number(10) references mf_master (mf_id),
-    insurance_id      number(10) references insurance_master (insurance_id)
+    insurance_id      number(10) references insurance_master (insurance_id),
+    customerid        varchar2(50)
 );
 
 
@@ -275,7 +275,7 @@ begin
     elsif trim(lower(p_operation)) = 'update' then
         update transactions
         set transactions_date = trim(p_transaction.transactions_date),
-            transactions_type = trim(p_transaction.transactions_type),
+            transactions_type = trim(lower(p_transaction.transactions_type)),
             amount            = trim(p_transaction.amount),
             customer_id       = trim(p_transaction.customer_id),
             equity_id         = trim(p_transaction.equity_id),
@@ -665,125 +665,125 @@ declare
     v_operation varchar2(10) := 'insert';
     v_equity    equity_shares%rowtype;
 begin
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Reliance Mutual Fund';
-    v_equity.equity_category_id := 1;
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Reliance Industries';
+    v_equity.equity_category_id := 2;
     v_equity.quantity := 100;
-    v_equity.purchase_date := TO_DATE('2022-01-01', 'YYYY-MM-DD');
+    v_equity.purchase_date := TO_DATE('2021-01-05', 'YYYY-MM-DD');
     v_equity.purchase_price := 2000.00;
     manage_equity_share(v_operation, v_equity);
 
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'HDFC Mutual Fund';
-    v_equity.equity_category_id := 1;
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'HDFC Bank';
+    v_equity.equity_category_id := 2;
     v_equity.quantity := 50;
-    v_equity.purchase_date := TO_DATE('2022-02-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 3000.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'SBI Mutual Fund';
-    v_equity.equity_category_id := 1;
-    v_equity.quantity := 75;
-    v_equity.purchase_date := TO_DATE('2022-03-01', 'YYYY-MM-DD');
+    v_equity.purchase_date := TO_DATE('2021-11-12', 'YYYY-MM-DD');
     v_equity.purchase_price := 1500.00;
     manage_equity_share(v_operation, v_equity);
 
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Tata Mutual Fund';
-    v_equity.equity_category_id := 1;
-    v_equity.quantity := 60;
-    v_equity.purchase_date := TO_DATE('2022-04-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 2500.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Axis Mutual Fund';
-    v_equity.equity_category_id := 1;
-    v_equity.quantity := 80;
-    v_equity.purchase_date := TO_DATE('2022-05-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 1800.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Reliance Industries Ltd.';
-    v_equity.equity_category_id := 2;
-    v_equity.quantity := 120;
-    v_equity.purchase_date := TO_DATE('2022-06-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 2500.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Tata Consultancy Services Ltd.';
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Tata Motors';
     v_equity.equity_category_id := 2;
     v_equity.quantity := 75;
-    v_equity.purchase_date := TO_DATE('2022-07-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 3500.00;
-    manage_equity_share(v_operation, v_equity);
-
-    -- Equity 8
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'HDFC Bank Ltd.';
-    v_equity.equity_category_id := 2; -- Stocks
-    v_equity.quantity := 90;
-    v_equity.purchase_date := TO_DATE('2022-08-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 1800.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Infosys Ltd.';
-    v_equity.equity_category_id := 2;
-    v_equity.quantity := 70;
-    v_equity.purchase_date := TO_DATE('2022-09-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 2800.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'ICICI Bank Ltd.';
-    v_equity.equity_category_id := 2;
-    v_equity.quantity := 100;
-    v_equity.purchase_date := TO_DATE('2022-10-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 2000.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Government Bonds';
-    v_equity.equity_category_id := 3;
-    v_equity.quantity := 50;
-    v_equity.purchase_date := TO_DATE('2022-11-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 1000.00;
-    manage_equity_share(v_operation, v_equity);
-
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Corporate Bonds';
-    v_equity.equity_category_id := 3;
-    v_equity.quantity := 75;
-    v_equity.purchase_date := TO_DATE('2022-12-01', 'YYYY-MM-DD');
+    v_equity.purchase_date := TO_DATE('2021-03-20', 'YYYY-MM-DD');
     v_equity.purchase_price := 1200.00;
     manage_equity_share(v_operation, v_equity);
 
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Angel Ventures';
-    v_equity.equity_category_id := 4;
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'ICICI Bank';
+    v_equity.equity_category_id := 2;
+    v_equity.quantity := 80;
+    v_equity.purchase_date := TO_DATE('2021-06-10', 'YYYY-MM-DD');
+    v_equity.purchase_price := 1800.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'SBI';
+    v_equity.equity_category_id := 2;
+    v_equity.quantity := 120;
+    v_equity.purchase_date := TO_DATE('2021-08-15', 'YYYY-MM-DD');
+    v_equity.purchase_price := 1000.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Hindustan Unilever';
+    v_equity.equity_category_id := 2;
     v_equity.quantity := 40;
-    v_equity.purchase_date := TO_DATE('2023-09-01', 'YYYY-MM-DD');
+    v_equity.purchase_date := TO_DATE('2021-04-02', 'YYYY-MM-DD');
+    v_equity.purchase_price := 2500.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Infosys';
+    v_equity.equity_category_id := 2;
+    v_equity.quantity := 60;
+    v_equity.purchase_date := TO_DATE('2021-02-18', 'YYYY-MM-DD');
     v_equity.purchase_price := 3000.00;
     manage_equity_share(v_operation, v_equity);
 
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'Sequoia Capital';
-    v_equity.equity_category_id := 4;
-    v_equity.quantity := 35;
-    v_equity.purchase_date := TO_DATE('2023-10-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 3500.00;
+    -- Equity 8
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'ITC';
+    v_equity.equity_category_id := 2;
+    v_equity.quantity := 90;
+    v_equity.purchase_date := TO_DATE('2021-07-30', 'YYYY-MM-DD');
+    v_equity.purchase_price := 1100.00;
     manage_equity_share(v_operation, v_equity);
 
-    v_equity.equity_id := finance_category_seq.nextval;
-    v_equity.equity_name := 'HDFC SIP';
-    v_equity.equity_category_id := 5;
-    v_equity.quantity := 60;
-    v_equity.purchase_date := TO_DATE('2024-01-01', 'YYYY-MM-DD');
-    v_equity.purchase_price := 1500.00;
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Axis Bank';
+    v_equity.equity_category_id := 2;
+    v_equity.quantity := 55;
+    v_equity.purchase_date := TO_DATE('2021-12-23', 'YYYY-MM-DD');
+    v_equity.purchase_price := 1700.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Bharti Airtel';
+    v_equity.equity_category_id := 2;
+    v_equity.quantity := 70;
+    v_equity.purchase_date := TO_DATE('2021-09-08', 'YYYY-MM-DD');
+    v_equity.purchase_price := 1900.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'HDFC Mutual Fund';
+    v_equity.equity_category_id := 1;
+    v_equity.quantity := 1000;
+    v_equity.purchase_date := TO_DATE('2021-03-05', 'YYYY-MM-DD');
+    v_equity.purchase_price := 25.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'SBI Mutual Fund';
+    v_equity.equity_category_id := 1;
+    v_equity.quantity := 500;
+    v_equity.purchase_date := TO_DATE('2021-11-10', 'YYYY-MM-DD');
+    v_equity.purchase_price := 30.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Aditya Birla Sun Life Mutual Fund';
+    v_equity.equity_category_id := 1;
+    v_equity.quantity := 800;
+    v_equity.purchase_date := TO_DATE('2021-07-15', 'YYYY-MM-DD');
+    v_equity.purchase_price := 28.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'ICICI Prudential Mutual Fund';
+    v_equity.equity_category_id := 1;
+    v_equity.quantity := 600;
+    v_equity.purchase_date := TO_DATE('2021-06-20', 'YYYY-MM-DD');
+    v_equity.purchase_price := 26.00;
+    manage_equity_share(v_operation, v_equity);
+
+    v_equity.equity_id := equity_shares_seq.nextval;
+    v_equity.equity_name := 'Franklin Templeton Mutual Fund';
+    v_equity.equity_category_id := 1;
+    v_equity.quantity := 400;
+    v_equity.purchase_date := TO_DATE('2021-09-30', 'YYYY-MM-DD');
+    v_equity.purchase_price := 27.00;
     manage_equity_share(v_operation, v_equity);
 end;
 
@@ -795,93 +795,184 @@ declare
 begin
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 1;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 100;
+    v_equity_rate.rate_date := TO_DATE('2021-01-05', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1999.50;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 1;
+    v_equity_rate.rate_date := TO_DATE('2021-01-06', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 2001.20;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 1;
+    v_equity_rate.rate_date := TO_DATE('2021-01-07', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1995.80;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 2;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 136;
+    v_equity_rate.rate_date := TO_DATE('2021-11-12', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1500.75;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 2;
+    v_equity_rate.rate_date := TO_DATE('2021-11-13', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1502.10;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 2;
+    v_equity_rate.rate_date := TO_DATE('2021-11-14', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1498.30;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 3;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 67;
+    v_equity_rate.rate_date := TO_DATE('2021-03-20', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1199.25;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 3;
+    v_equity_rate.rate_date := TO_DATE('2021-03-21', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1201.80;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 3;
+    v_equity_rate.rate_date := TO_DATE('2021-03-22', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1195.50;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 4;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 250;
+    v_equity_rate.rate_date := TO_DATE('2021-06-10', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1799.90;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 4;
+    v_equity_rate.rate_date := TO_DATE('2021-06-11', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1802.70;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 4;
+    v_equity_rate.rate_date := TO_DATE('2021-06-12', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1796.10;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 5;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 148;
+    v_equity_rate.rate_date := TO_DATE('2021-08-15', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 999.80;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 5;
+    v_equity_rate.rate_date := TO_DATE('2021-08-16', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1002.40;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 5;
+    v_equity_rate.rate_date := TO_DATE('2021-08-17', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 998.90;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 6;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 195;
+    v_equity_rate.rate_date := TO_DATE('2021-04-02', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 2499.10;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 6;
+    v_equity_rate.rate_date := TO_DATE('2021-04-03', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 2501.80;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 6;
+    v_equity_rate.rate_date := TO_DATE('2021-04-04', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 2496.70;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 7;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 598;
+    v_equity_rate.rate_date := TO_DATE('2021-02-18', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 2999.25;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 7;
+    v_equity_rate.rate_date := TO_DATE('2021-02-19', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 3002.10;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 7;
+    v_equity_rate.rate_date := TO_DATE('2021-02-20', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 2995.80;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 8;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 352;
+    v_equity_rate.rate_date := TO_DATE('2021-07-30', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1099.50;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 8;
+    v_equity_rate.rate_date := TO_DATE('2021-07-31', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1102.20;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 8;
+    v_equity_rate.rate_date := TO_DATE('2021-08-01', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1095.70;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 9;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 142;
+    v_equity_rate.rate_date := TO_DATE('2021-12-23', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1699.80;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 9;
+    v_equity_rate.rate_date := TO_DATE('2021-12-24', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1702.40;
+    manage_equity_rate(v_operation, v_equity_rate);
+
+    v_equity_rate.rate_id := equity_rate_seq.nextval;
+    v_equity_rate.equity_id := 9;
+    v_equity_rate.rate_date := TO_DATE('2021-12-25', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1698.90;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 10;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 453;
+    v_equity_rate.rate_date := TO_DATE('2021-09-08', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1899.25;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
-    v_equity_rate.equity_id := 11;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 778;
+    v_equity_rate.equity_id := 10;
+    v_equity_rate.rate_date := TO_DATE('2021-09-09', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1902.10;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
-    v_equity_rate.equity_id := 12;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 685;
+    v_equity_rate.equity_id := 10;
+    v_equity_rate.rate_date := TO_DATE('2021-09-10', 'YYYY-MM-DD');
+    v_equity_rate.closing_price := 1895.80;
     manage_equity_rate(v_operation, v_equity_rate);
 
-    v_equity_rate.rate_id := equity_rate_seq.nextval;
-    v_equity_rate.equity_id := 13;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 853;
-    manage_equity_rate(v_operation, v_equity_rate);
-
-    v_equity_rate.rate_id := equity_rate_seq.nextval;
-    v_equity_rate.equity_id := 14;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 341;
-    manage_equity_rate(v_operation, v_equity_rate);
-
-    v_equity_rate.rate_id := equity_rate_seq.nextval;
-    v_equity_rate.equity_id := 15;
-    v_equity_rate.rate_date := to_date('2024-06-01', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 486;
-    manage_equity_rate(v_operation, v_equity_rate);
 end;
 
 -- insurance_master table record entry
@@ -1155,6 +1246,7 @@ begin
     manage_mf_rates(v_operation, v_mf);
 end;
 
+
 -- Transaction table record entry
 
 declare
@@ -1162,209 +1254,115 @@ declare
     v_transactions transactions%ROWTYPE;
 begin
     v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-07', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 2000;
-    v_transactions.customer_id := 5;
-    v_transactions.equity_id := 1;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-06', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 3000;
-    v_transactions.customer_id := 12;
-    v_transactions.mf_id := 2;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-05', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 2500;
-    v_transactions.customer_id := 3;
-    v_transactions.insurance_id := 4;
-    v_transactions.equity_id := null;
-    v_transactions.mf_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-04', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 1800;
-    v_transactions.customer_id := 7;
-    v_transactions.equity_id := 5;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-03', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 2500;
-    v_transactions.customer_id := 10;
-    v_transactions.mf_id := 3;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-02', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 1500;
-    v_transactions.customer_id := 22;
-    v_transactions.insurance_id := 2;
-    v_transactions.equity_id := null;
-    v_transactions.mf_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-06-01', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 3500;
-    v_transactions.customer_id := 16;
-    v_transactions.equity_id := 7;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-31', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 1800;
-    v_transactions.customer_id := 9;
-    v_transactions.mf_id := 1;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-30', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 2800;
-    v_transactions.customer_id := 18;
-    v_transactions.insurance_id := 9;
-    v_transactions.equity_id := null;
-    v_transactions.mf_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-29', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 2000;
-    v_transactions.customer_id := 6;
-    v_transactions.equity_id := 3;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-28', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 1500;
+    v_transactions.transactions_date := TO_DATE('2021-01-05', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 200000.00;
     v_transactions.customer_id := 1;
-    v_transactions.mf_id := 5;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-27', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 2200;
-    v_transactions.customer_id := 8;
-    v_transactions.mf_id := 2;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-26', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 3200;
-    v_transactions.customer_id := 14;
-    v_transactions.insurance_id := 8;
-    v_transactions.equity_id := null;
-    v_transactions.mf_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-25', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 2800;
-    v_transactions.customer_id := 20;
-    v_transactions.equity_id := 6;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-24', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 1900;
-    v_transactions.customer_id := 11;
-    v_transactions.mf_id := 4;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-23', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 2500;
-    v_transactions.customer_id := 19;
-    v_transactions.equity_id := 9;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-22', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 2300;
-    v_transactions.customer_id := 25;
-    v_transactions.insurance_id := 10;
-    v_transactions.equity_id := null;
-    v_transactions.mf_id := null;
-    manage_transaction(v_operation, v_transactions);
-
-    v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-21', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 1800;
-    v_transactions.customer_id := 15;
     v_transactions.equity_id := 1;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
     manage_transaction(v_operation, v_transactions);
 
     v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-20', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Buy';
-    v_transactions.amount := 2700;
+    v_transactions.transactions_date := TO_DATE('2021-11-12', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 75000.00;
     v_transactions.customer_id := 2;
-    v_transactions.mf_id := 7;
-    v_transactions.equity_id := null;
-    v_transactions.insurance_id := null;
+    v_transactions.equity_id := 2;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
     manage_transaction(v_operation, v_transactions);
 
     v_transactions.transaction_id := transactions_seq.nextval;
-    v_transactions.transactions_date := to_date('2023-05-19', 'yyyy-mm-dd');
-    v_transactions.transactions_type := 'Sell';
-    v_transactions.amount := 2100;
-    v_transactions.customer_id := 13;
+    v_transactions.transactions_date := TO_DATE('2021-03-20', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 90000.00;
+    v_transactions.customer_id := 3;
+    v_transactions.equity_id := 3;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-06-10', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 144000.00;
+    v_transactions.customer_id := 4;
     v_transactions.equity_id := 4;
-    v_transactions.mf_id := null;
-    v_transactions.insurance_id := null;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-08-15', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 120000.00;
+    v_transactions.customer_id := 5;
+    v_transactions.equity_id := 5;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-04-02', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 100000.00;
+    v_transactions.customer_id := 6;
+    v_transactions.equity_id := 6;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-02-18', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 180000.00;
+    v_transactions.customer_id := 7;
+    v_transactions.equity_id := 7;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-12-23', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'buy';
+    v_transactions.amount := 93500.00;
+    v_transactions.customer_id := 7;
+    v_transactions.equity_id := 9;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-01-06', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'sell';
+    v_transactions.amount := 210520.00;
+    v_transactions.customer_id := 1;
+    v_transactions.equity_id := 1;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-03-22', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'sell';
+    v_transactions.amount := 88500.00;
+    v_transactions.customer_id := 3;
+    v_transactions.equity_id := 3;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
+    manage_transaction(v_operation, v_transactions);
+
+    v_transactions.transaction_id := transactions_seq.nextval;
+    v_transactions.transactions_date := TO_DATE('2021-02-18', 'yyyy-mm-dd');
+    v_transactions.transactions_type := 'sell';
+    v_transactions.amount := 189540.00;
+    v_transactions.customer_id := 7;
+    v_transactions.equity_id := 7;
+    v_transactions.mf_id := NULL;
+    v_transactions.insurance_id := NULL;
     manage_transaction(v_operation, v_transactions);
 end;
-
--- Week-1 End --
-
--- Week-2 Start --
 
 -- Transactionlist procedure
 
@@ -1407,16 +1405,6 @@ var rc refcursor;
 execute transactionlist(p_result=>:rc);
 print rc;
 
--- Alter customers table
-
-alter table customers
-    add customerid varchar2(50) unique;
-
--- Alter transaction table
-
-alter table transactions
-    add customerid varchar2(50) unique;
-
 -- Generate portfolio report procedure
 
 create or replace procedure generate_portfolio_report(p_cursor out sys_refcursor) as
@@ -1426,40 +1414,25 @@ begin
                c.first_name,
                c.last_name,
                sum(case
-                       when t.transactions_type = 'Buy' and t.equity_id is not null then t.amount
+                       when t.transactions_type = 'buy' and t.equity_id is not null then t.amount
                        else 0
                    end) as total_investment_amount_equity,
                sum(case
-                       when t.transactions_type = 'Buy' and t.mf_id is not null then t.amount
+                       when t.transactions_type = 'buy' and t.mf_id is not null then t.amount
                        else 0
                    end) as total_investment_amount_mf,
                sum(case
-                       when t.transactions_type = 'Buy' and t.insurance_id is not null then t.amount
+                       when t.transactions_type = 'buy' and t.insurance_id is not null then t.amount
                        else 0
                    end) as total_investment_amount_insurance,
                sum(case
-                       when t.transactions_type = 'Buy' then t.amount
+                       when t.transactions_type = 'buy' then t.amount
                        else 0
-                   end) as total_investment_amount,
-               sum(case
-                       when t.transactions_type = 'Sell' and (t.equity_id is not null or t.mf_id is not null) then
-                           t.amount - (eq.quantity * er.closing_price)
-                       else 0
-                   end) as total_profit_loss,
-               case
-                   when sum(case when t.transactions_type = 'Buy' then t.amount else 0 end) <> 0
-                       then (sum(case
-                                     when t.transactions_type = 'Sell' then t.amount - (eq.quantity * er.closing_price)
-                                     else 0 end) /
-                             sum(case when t.transactions_type = 'Buy' then t.amount else 0 end)) * 100
-                   else 0
-                   end  as net_change_percentage
+                   end) as total_investment_amount
         from customers c
                  left join transactions t on c.customer_id = t.customer_id
                  left join equity_shares eq on t.equity_id = eq.equity_id
-                 left join equity_rate er on eq.equity_id = er.equity_id
                  left join mf_master mf on t.mf_id = mf.mf_id
-                 left join mf_rates mf_nav on t.mf_id = mf_nav.mf_id and t.transactions_date = mf_nav.rate_date
                  left join insurance_master im on t.insurance_id = im.insurance_id
         where t.equity_id is not null
            or t.mf_id is not null
@@ -1470,6 +1443,88 @@ begin
         order by total_investment_amount desc;
 end;
 
+
 var rc refcursor;
 exec generate_portfolio_report(p_cursor => :rc);
+print rc;
+
+-- Get_Equity_Details Procedure
+
+create or replace procedure get_equity_details(
+    p_customer_id in number,
+    p_cursor out sys_refcursor
+) is
+begin
+    open p_cursor for
+        select es.equity_name,
+               es.quantity                                          as quantity,
+               (t.amount / es.quantity)                             as avg_cost,
+               er.closing_price                                     as last_trading_price,
+               t.amount                                             as invested_amount,
+               (er.closing_price - es.purchase_price) * es.quantity as profit_loss,
+               ((er.closing_price - es.purchase_price) * es.quantity) / (es.purchase_price * es.quantity) *
+               100                                                  as net_change
+        from equity_shares es
+                 join (select er.equity_id, max(er.rate_date) as max_rate_date
+                       from equity_rate er
+                       group by er.equity_id) er_max on er_max.equity_id = es.equity_id
+                 join equity_rate er on er.equity_id = es.equity_id and er.rate_date = er_max.max_rate_date
+                 left join (select equity_id
+                            from transactions
+                            where customer_id = p_customer_id
+                              and transactions_type = 'sell') t_sell on t_sell.equity_id = es.equity_id
+                 left join transactions t on t.equity_id = es.equity_id
+            and t.customer_id = p_customer_id
+            and t.transactions_type = 'buy'
+        where t.customer_id = p_customer_id
+          and t.equity_id is not null
+          and t_sell.equity_id is null;
+end;
+
+var rc refcursor;
+exec get_equity_details(p_customer_id => 1,p_cursor => :rc);
+print rc;
+
+-- Get_Sold_Equity_Details Procedure
+
+create or replace procedure get_sold_equity_details(
+    p_customer_id in number,
+    p_cursor out sys_refcursor
+) is
+begin
+    open p_cursor for
+        select es.equity_name,
+               es.quantity                                               as quantity,
+               (t_buy.amount / es.quantity)                              as avg_cost,
+               er_sell.closing_price                                     as last_trading_price,
+               t_buy.amount                                              as invested_amount,
+               (er_sell.closing_price - es.purchase_price) * es.quantity as profit_loss,
+               ((er_sell.closing_price - es.purchase_price) * es.quantity) / (es.purchase_price * es.quantity) *
+               100                                                       as net_change
+        from equity_shares es
+                 join (select equity_id
+                       from transactions
+                       where customer_id = p_customer_id
+                         and transactions_type = 'buy') sold_equities on sold_equities.equity_id = es.equity_id
+                 join (select equity_id, max(rate_date) as max_sell_date
+                       from equity_rate
+                       where equity_id in (select equity_id
+                                           from transactions
+                                           where customer_id = p_customer_id
+                                             and transactions_type = 'sell')
+                       group by equity_id) er_sell_max on er_sell_max.equity_id = es.equity_id
+                 join equity_rate er_sell
+                      on er_sell.equity_id = es.equity_id and er_sell.rate_date = er_sell_max.max_sell_date
+                 join transactions t_buy on t_buy.equity_id = es.equity_id
+            and t_buy.customer_id = p_customer_id
+            and t_buy.transactions_type = 'buy'
+        where exists (select 1
+                      from transactions
+                      where equity_id = es.equity_id
+                        and customer_id = p_customer_id
+                        and transactions_type = 'sell');
+end;
+
+var rc refcursor;
+exec get_sold_equity_details(p_customer_id => 1,p_cursor => :rc);
 print rc;
