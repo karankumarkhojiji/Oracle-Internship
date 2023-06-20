@@ -180,8 +180,8 @@ begin
                er.closing_price                                     as last_price,
                es.quantity * es.purchase_price                      as invested_amount,
                (er.closing_price - es.purchase_price) * es.quantity as profit_loss,
-               ((er.closing_price - es.purchase_price) * es.quantity) / (es.purchase_price * es.quantity) *
-               100                                                  as net_change
+               round(((er.closing_price - es.purchase_price) * es.quantity) / (es.purchase_price * es.quantity) * 100,
+                     2)                                             as net_change
         from customers c
                  join transactions t on c.customer_id = t.customer_id
                  join equity_shares es on t.equity_id = es.equity_id

@@ -500,7 +500,7 @@ begin
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 2;
     v_equity_rate.rate_date := TO_DATE('2021-11-14', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 1498.30;
+    v_equity_rate.closing_price := 1600.30;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
@@ -536,7 +536,7 @@ begin
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 4;
     v_equity_rate.rate_date := TO_DATE('2021-06-12', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 1796.10;
+    v_equity_rate.closing_price := 1850.10;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
@@ -554,7 +554,7 @@ begin
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 5;
     v_equity_rate.rate_date := TO_DATE('2021-08-17', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 998.90;
+    v_equity_rate.closing_price := 1548.90;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
@@ -590,7 +590,7 @@ begin
     v_equity_rate.rate_id := equity_rate_seq.nextval;
     v_equity_rate.equity_id := 7;
     v_equity_rate.rate_date := TO_DATE('2021-02-20', 'YYYY-MM-DD');
-    v_equity_rate.closing_price := 2995.80;
+    v_equity_rate.closing_price := 3500.80;
     manage_equity_rate(v_operation, v_equity_rate);
 
     v_equity_rate.rate_id := equity_rate_seq.nextval;
