@@ -199,3 +199,26 @@ end;
 var rc refcursor;
 exec get_customer_equity_details(p_cursor => :rc);
 print rc;
+
+create or replace view get_customer_equity_view as
+select c.customer_id,
+       c.first_name,
+       c.last_name,
+       es.equity_name,
+       es.quantity                                          as num_shares,
+       es.purchase_price                                    as avg_cost,
+       er.closing_price                                     as last_price,
+       es.quantity * es.purchase_price                      as invested_amount,
+       (er.closing_price - es.purchase_price) * es.quantity as profit_loss,
+       round(((er.closing_price - es.purchase_price) * es.quantity) / (es.purchase_price * es.quantity) * 100, 2) as net_change
+from customers c
+         join transactions t on c.customer_id = t.customer_id
+         join equity_shares es on t.equity_id = es.equity_id
+         join (select equity_id, max(rate_date) as max_rate_date
+               from equity_rate
+               group by equity_id) er_max on er_max.equity_id = es.equity_id
+         join equity_rate er on er.equity_id = es.equity_id and er.rate_date = er_max.max_rate_date
+where t.transactions_type = 'buy'
+group by c.customer_id, c.first_name, c.last_name, es.equity_name, es.quantity, es.purchase_price, er.closing_price
+having sum(t.amount) = sum(es.quantity * es.purchase_price)
+order by c.customer_id;
